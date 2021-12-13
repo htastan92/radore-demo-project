@@ -1,0 +1,90 @@
+﻿@model RadoreDemo.Models.Account.AccountNewViewModel
+
+
+<form action="/account/add" id="account-form">
+    <div class="card card-default">
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label asp-for="HostingDomainName">Hosting Domain Name</label>
+                        <input asp-for="HostingDomainName" type="text" class="form-control" required>
+                        <span asp-validation-for="HostingDomainName" class="text-danger"></span>
+                    </div>
+
+                </div> <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="HostingPackage">Hosting Package</label>
+                        <input asp-for="HostingPackage" type="text" class="form-control" required>
+                        <span asp-validation-for="HostingPackage" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Add Account" class="btn btn-info btn-sm" />
+                @Html.ActionLink("Back To Menu", "Index", "Account", null, new { @class = "btn btn-danger btn-sm" })
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+
+@section Scripts {
+<script type="text/javascript">
+    async function handleFormSubmit(event) {
+      event.preventDefault();  
+
+      const form = event.currentTarget;
+      const url = form.action;
+
+     const formData = new FormData(form);
+     const responseData = await postFormDataAsJson({ url, formData });
+    }
+
+    async function postFormDataAsJson({ url, formData }) {
+      const plainFormData = Object.fromEntries(formData.entries());
+      const formDataJsonString = JSON.stringify(plainFormData);   
+
+      const fetchOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: formDataJsonString,
+      };
+
+      const response = await fetch(url, fetchOptions);
+
+      if (response.ok) {
+        const isConfirmed = Swal.fire({
+          title: "Success!",
+          text: "Account successfully added.",
+          icon: "success",
+          confirmButtonText: "Okay",
+        }).then((result) => {
+          if (result.value === true) window.location.replace("/account/index");
+        });
+      }else{           
+        const isConfirmed = Swal.fire({
+          title: "Failed!",
+          text: "Something went wrong. Account can not be added.",
+          icon: "error",
+          confirmButtonText: "Okay",
+        })
+      }
+
+      return response.json();
+    }
+
+    const accountForm = document.getElementById("account-form");
+    accountForm.addEventListener("submit", handleFormSubmit);
+
+</script>
+}

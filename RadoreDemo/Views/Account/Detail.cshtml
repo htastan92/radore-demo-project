@@ -1,0 +1,65 @@
+﻿@model RadoreDemo.Models.Account.AccountDetailViewModel
+
+<div class="card card-default">
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label asp-for="HostingDomainName">Hosting Domain Name</label>
+                    <input asp-for="HostingDomainName" disabled type="text" class="form-control" id="hostingDomainName">
+                </div>
+
+            </div> <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="HostingPackage">Hosting Package</label>
+                    <input asp-for="HostingPackage" disabled type="text" class="form-control" id="hostingPackage">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label asp-for="IncomingConnections">Incoming Connections</label>
+                    <input asp-for="IncomingConnections" disabled type="text" class="form-control" id="incomingConnections">
+                </div>
+
+            </div> <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Message">Message</label>
+                    <input asp-for="Message" disabled type="text" class="form-control" id="message">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label asp-for="RamUsage">Ram Usage</label>
+                    <input asp-for="RamUsage" disabled type="text" class="form-control" id="ramUsage">
+                </div>
+
+            </div> <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="RamMax">Ram Max</label>
+                    <input asp-for="RamMax" disabled type="text" class="form-control" id="ramMax">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label asp-for="CpuLoad">Cpu Load</label>
+                    <input asp-for="CpuLoad" disabled type="text" class="form-control" id="cpuLoad">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

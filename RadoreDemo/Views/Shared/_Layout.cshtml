@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Radore Demo</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="/css/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.min.css">
+    @await RenderSectionAsync("Styles", required:false)
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <partial name="_Header" />
+        <partial name="_Aside" />
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <partial name="_Footer" />
+    </div>
+
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/adminlte.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.js"></script>
+
+    @await RenderSectionAsync("Scripts", required:false)
+</body>
+</html>
